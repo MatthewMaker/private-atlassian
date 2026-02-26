@@ -1,0 +1,5 @@
+# Plugin settings — contain user-specific info (cloud IDs, site URLs)
+.claude/*.local.md
+
+# macOS
+.DS_Store

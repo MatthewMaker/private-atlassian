@@ -1,0 +1,101 @@
+# private-atlassian
+
+A Claude Code plugin that mediates interaction with the Atlassian MCP server,
+keeping Jira and Confluence responses focused and context-efficient.
+
+## The Problem
+
+The Atlassian MCP server returns verbose JSON. A single Confluence page fetch
+can consume thousands of tokens; a JQL search dumping 20 full issue objects is
+worse. Without mediation, every Atlassian interaction risks flooding the context
+window with noise.
+
+## What This Plugin Does
+
+- **Digest-first output**: Summaries by default, full content only on request
+- **Targeted queries**: JQL/CQL patterns that fetch only what's needed
+- **cloudId caching**: Read once from a settings file, never redundantly fetched
+- **Structured research**: An autonomous agent for multi-step Atlassian research
+  that keeps raw intermediate results out of the main conversation
+
+## Components
+
+| Component | Type | Purpose |
+|-----------|------|---------|
+| `atlassian-mediation` | Skill | Teaches Claude the discipline of efficient Atlassian interaction |
+| `/jira` | Command | Search Jira or look up an issue with digest output |
+| `/confluence` | Command | Search Confluence or fetch a page with digest output |
+| `atlassian-researcher` | Agent | Multi-step autonomous research across Jira + Confluence |
+
+## Prerequisites
+
+- Atlassian MCP server configured in Claude Code
+  (`mcp__claude_ai_Atlassian__*` tools available)
+- An Atlassian account with access to your workspace
+
+## Setup
+
+1. **Install the plugin** in Claude Code
+
+2. **Create your settings file**:
+   ```bash
+   cp .claude/private-atlassian.local.md.example .claude/private-atlassian.local.md
+   ```
+
+3. **Find your cloud ID** — ask Claude:
+   > "What is my Atlassian cloud ID?"
+
+   Claude will call `getAccessibleAtlassianResources` and display it.
+
+4. **Edit `.claude/private-atlassian.local.md`**:
+   ```yaml
+   ---
+   cloud_id: "your-cloud-id-here"
+   site_url: "https://your-org.atlassian.net"
+   ---
+   ```
+
+   This file is gitignored and will not be committed.
+
+## Usage
+
+### Commands
+
+```
+/jira PROJ-123
+/jira my open bugs
+/jira project = MYPROJ AND status = "In Progress"
+
+/confluence deployment runbooks
+/confluence auth docs in ENG space
+/confluence 123456789
+```
+
+### Agent
+
+Ask naturally:
+> "Research the background on the auth refactor — check Jira and Confluence."
+
+> "Give me a complete picture of PROJ-456: linked issues, history, related docs."
+
+> "What Confluence pages exist about our deployment process?"
+
+### Skill (automatic)
+
+The `atlassian-mediation` skill activates automatically whenever you ask Claude
+to look up Jira or Confluence content, enforcing context-efficient behavior
+without any explicit invocation.
+
+## Configuration
+
+Settings are stored in `.claude/private-atlassian.local.md` (gitignored).
+See `.claude/private-atlassian.local.md.example` for the template.
+
+| Field | Description |
+|-------|-------------|
+| `cloud_id` | Atlassian workspace UUID (required) |
+| `site_url` | Your Atlassian site URL, e.g. `https://acme.atlassian.net` |
+
+## License
+
+MIT
