@@ -22,10 +22,10 @@ limit fields fetched, and always cache the cloudId rather than re-fetching it.
 
 ## Settings: cloudId and Site URL
 
-Before making any Atlassian MCP call, read the plugin settings file:
+Before making any Atlassian MCP call, read the plugin settings file at:
 
 ```
-.claude/private-atlassian.local.md
+$CLAUDE_CONFIG_DIR/private-atlassian.local.md
 ```
 
 This file contains YAML frontmatter with the user's `cloud_id` and `site_url`.

@@ -19,7 +19,7 @@ Perform a focused Jira lookup or search and return a compact digest.
 
 ### Steps
 
-1. **Load settings**: Read `.claude/private-atlassian.local.md` to get `cloud_id`.
+1. **Load settings**: Read `$CLAUDE_CONFIG_DIR/private-atlassian.local.md` to get `cloud_id`.
    If missing or empty, call `getAccessibleAtlassianResources` once to retrieve it.
    Remind the user to populate the settings file if it wasn't found.
 

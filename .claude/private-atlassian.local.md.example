@@ -20,9 +20,12 @@ Copy it into the `cloud_id` field above.
 
 ## Setup
 
-1. Copy this file to `.claude/private-atlassian.local.md` (without the `.example` suffix)
+1. Copy this file to `$CLAUDE_CONFIG_DIR/private-atlassian.local.md` (without the `.example` suffix):
+   ```bash
+   cp .claude/private-atlassian.local.md.example "$CLAUDE_CONFIG_DIR/private-atlassian.local.md"
+   ```
 2. Fill in `cloud_id` and `site_url`
-3. The `.local.md` file is gitignored and will not be committed
+3. This file lives outside the repo and is never committed
 
 ## Example
 

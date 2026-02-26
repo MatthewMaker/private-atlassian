@@ -48,7 +48,7 @@ raw data.
 
 ## Setup
 
-Start by reading `.claude/private-atlassian.local.md` to get `cloud_id` and
+Start by reading `$CLAUDE_CONFIG_DIR/private-atlassian.local.md` to get `cloud_id` and
 `site_url`. Parse the YAML frontmatter. If `cloud_id` is absent, call
 `getAccessibleAtlassianResources` to retrieve it.
 

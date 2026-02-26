@@ -37,9 +37,10 @@ window with noise.
 
 1. **Install the plugin** in Claude Code
 
-2. **Create your settings file**:
+2. **Create your settings file** at `$CLAUDE_CONFIG_DIR/private-atlassian.local.md`
+   (that's typically `~/.claude/private-atlassian.local.md`, but use the env var):
    ```bash
-   cp .claude/private-atlassian.local.md.example .claude/private-atlassian.local.md
+   cp .claude/private-atlassian.local.md.example "$CLAUDE_CONFIG_DIR/private-atlassian.local.md"
    ```
 
 3. **Find your cloud ID** — ask Claude:
@@ -47,7 +48,7 @@ window with noise.
 
    Claude will call `getAccessibleAtlassianResources` and display it.
 
-4. **Edit `.claude/private-atlassian.local.md`**:
+4. **Edit `$CLAUDE_CONFIG_DIR/private-atlassian.local.md`**:
    ```yaml
    ---
    cloud_id: "your-cloud-id-here"
@@ -55,7 +56,7 @@ window with noise.
    ---
    ```
 
-   This file is gitignored and will not be committed.
+   This file lives outside the repo and is never committed.
 
 ## Usage
 
@@ -88,8 +89,8 @@ without any explicit invocation.
 
 ## Configuration
 
-Settings are stored in `.claude/private-atlassian.local.md` (gitignored).
-See `.claude/private-atlassian.local.md.example` for the template.
+Settings are stored in `$CLAUDE_CONFIG_DIR/private-atlassian.local.md` (outside the repo, never committed).
+See `.claude/private-atlassian.local.md.example` in the repo for the template.
 
 | Field | Description |
 |-------|-------------|
