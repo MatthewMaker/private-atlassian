@@ -4,10 +4,14 @@ description: >
   This skill should be used when the user asks to "look up a Jira issue",
   "find a Confluence page", "search Jira", "search Confluence", "show me
   issues in project X", "what's the status of ticket Y", "find docs about Z",
-  or any task that involves reading from or searching Atlassian (Jira or
-  Confluence). Guides efficient, low-bloat interaction with the Atlassian MCP
-  server by enforcing digest output, cloudId caching, and targeted queries.
-version: 0.1.0
+  "what have I done", "what tickets did I touch", "since my last standup",
+  "what's blocked", "what's in progress", "what's in this sprint", or any
+  task that involves reading from or searching Atlassian (Jira or Confluence)
+  — including activity, progress, and "what changed" questions that imply a
+  Jira or Confluence query. Guides efficient, low-bloat interaction with the
+  Atlassian MCP server by enforcing digest output, cloudId caching, and
+  targeted queries.
+version: 0.1.1
 ---
 
 # Atlassian Mediation
